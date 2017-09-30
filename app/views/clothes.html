@@ -1,0 +1,209 @@
+<div class="container">
+    
+    
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Wardrobe</li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    
+        <!-- Add clothes section, shown if link in tab menu is clicked -->
+    
+    <div class="row row-content" ng-show="showAddClothes"> 
+        
+        <div class="col-xs-12">
+            <h3>Add clothes</h3>
+            <hr>
+        </div>     
+    
+                   
+        <!-- image upload form -->    
+        
+         <form class="col-xs-12 col-sm-4 inline-form" name="upload_form" ng-submit="upload(file)">  
+            
+            <div class="form-group text-muted">
+                
+                <label class="sr-only"> Image preview </label>
+                <img class="img-responsive" style="max-width: 200px;" ngf-thumbnail="file || '/thumb.jpg'"/> 
+                    <i ng-show="upload_form.file.$error.required">Image is required</i><br>
+                    <i ng-show="upload_form.file.$error.maxSize">File too large 
+                    {{file.size / 1000000|number:1}}MB: max 10M</i>
+            </div>
+             
+
+             <div class="form-group text-muted">         
+                 
+                 <label class="btn btn-md btn-default">Select image 
+                     <input type="file" hidden ngf-select ng-model="file" name="file" 
+                        ngf-pattern="'image/*'" accept="image/*" ngf-max-size="10MB" required>
+                 </label>
+                 <button type="submit" class="btn btn-md btn-info">Upload</button>
+                 
+                 <p style="padding-top: 10px">{{progress}}</p> 
+             </div>
+             
+            <!-- ngf-select: Shows the type of selection is select. Drag and drop is also available.ngf-pattern: Partern to match, type of file.(eg:”‘image/*'” for images)-->
+
+        </form>
+        
+        
+        <!-- clothes upload form -->
+        
+        <form class="col-xs-12 col-sm-4" name="addClothesForm" ng-submit="addClothesToWardrobe()">   
+            
+            <div class="form-group">
+                <label class="sr-only" for="image">URL</label>
+                <input type="text" class="form-control input" id="image" placeholder="image URL" ng-model="newclothes.image" required>
+            </div>
+        
+            
+            <div class="form-group">
+                <label class="sr-only" for="name">Name</label>
+                <input type="text" class="form-control input" id="name" placeholder="Name" ng-model="newclothes.name" required>
+            </div>
+            
+            
+            <div class="form-group text-muted">
+                <select class="form-control"
+                   ng-model="newclothes.category"
+                   ng-options="category.value as category.label for category in categories" required>
+                    <option value="">Choose category</option>
+                </select>
+            </div>
+            
+            
+            <div class="form-group text-muted">
+                <select class="form-control"
+                   ng-model="newclothes.season"
+                   ng-options="season.value as season.label for season in seasons">
+                    <option value="">Choose season</option>
+                </select>
+            </div>
+            
+            
+            <div class="form-group">
+                <label class="sr-only" for="name">Color</label>
+                <input type="text" class="form-control input" id="color" placeholder="Color" ng-model="newclothes.color">
+            </div>
+
+            
+            <div class="form-group">
+                <label class="sr-only" for="brand">Brand</label>
+                <input type="text" class="form-control input" id="brand" placeholder="Brand" ng-model="newclothes.brand">
+            </div>
+            
+            
+            <div class="form-group">
+                <label class="sr-only" for="description">Description</label>
+                <textarea class="form-control input" id="description" placeholder="Description (optional)" rows="4" ng-model="newclothes.description"></textarea>
+            </div>
+
+            
+            <button type="submit" class="btn btn-info btn-md">Add to wardrobe</button>  
+            <button type="button" ng-click="addClothes()" class="btn btn-light btn-md">Cancel</button> 
+            
+        </form>
+            
+        
+    </div>
+    
+    
+        <!-- Main section with wardrobe -->
+
+    <div class="row row-content">
+        
+        <div class="col-xs-12 col-sm-9">
+            <h3>Wardrobe</h3>
+        </div>
+        <div class="col-xs-12 col-sm-3 btn-group" ng-if="showClothes">
+            
+            <a ng-click="addSampleClothes()" class="btn btn-md btn-default" style="margin-top: 20px" role="button">Sample clothes</a>
+            
+            <a ng-click="addClothes()" class="btn btn-md btn-success" style="margin-top: 20px" role="button">
+                <i class="fa fa-lg fa-plus-circle" aria-hidden="true"></i>&nbsp; New item</a>
+            
+        </div>
+        <div class="col-xs-12"><hr></div>
+                        
+        
+        
+            <!-- tabbed categories menu -->
+
+        <div class="col-xs-12 col-sm-3" ng-if="showClothes">
+
+            <button type="button" class="navbar-toggle btn-link pull-left" 
+                    ng-click="collapseNav()">
+                Categories&nbsp; <span class="caret"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed"> 
+
+                <ul class="nav nav-pills nav-stacked">  
+                    <li role="presentation" 
+                        ng-class="{active:isSelected(0)}">
+                    <a ng-click="select(0)" aria-controls="all categories"
+                        role="tab" class="btn btn-link" 
+                       style="text-align: left">All </a></li>
+                </ul>
+
+                <ul class="nav nav-pills nav-stacked" ng-repeat="category in categories track by category.id">  
+                    <li role="presentation"
+                    ng-class="{active:isSelected(category.id)}">
+                    <a ng-click="select(category.id)"
+                     aria-controls="{{category.value}}"
+                    role="tab">{{category.label}}</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+        
+        <div class="col-xs-12 col-sm-9" ng-if="!showClothes">
+            <div class="alert alert-warning">
+            <strong> Log in to use your wardrobe</strong>
+            </div>
+        </div> 
+        
+        
+        <!-- tab contents -->
+        
+        <div class="col-xs-12 col-sm-9" ng-if="showClothes" id="wardrobe">    
+            
+            <ul class="media-list tab-pane fade in active">
+                   
+                <li class="media" ng-repeat="clothes in clothes | filter:filtText"> 
+                    
+                    <div class="col-md-5 col-sm-12 col-xs-12">
+                    <div class="media-left media-middle">
+                        
+                        <img class="media-object img-thumbnail img-responsive" style="max-height: 400px; max-width: 250px; margin-bottom: 10 px; border: 0px none; box-shadow: none; padding-bottom: 10px"
+                        ng-src={{clothes.image}} alt="{{clothes.name}}">
+                        
+                    </div>
+                    </div>
+                    
+                    <div class="col-md-7 col-sm-12 col-xs-12">
+                    <div class="media-body">
+
+                        <h3 class="media-heading">{{clothes.name}}       
+                          <button ng-click="deleteClothes(clothes._id)" class="btn btn-link btn-circle pull-right" type="button" ng-show="showDelete">
+                            <i class="fa fa-trash-o"></i></button>
+                        </h3>
+                        <p>{{clothes.description}}</p> 
+                        <p class="text-muted">{{clothes.brand}}</p>
+                         
+                    </div>
+                    </div>
+                </li>
+            </ul>
+        </div>  
+        
+    </div>
+    
+    
+
