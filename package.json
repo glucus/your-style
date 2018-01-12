@@ -1,9 +1,8 @@
 {
-  "name": "personalStylist",
+  "name": "yourStyleApp",
   "private": true,
   "devDependencies": {
     "browser-sync": "^2.10.0",
-    "del": "^2.0.2",
     "gulp": "^3.9.0",
     "gulp-cache": "^0.4.0",
     "gulp-changed": "^1.3.0",
@@ -17,25 +16,20 @@
     "gulp-rev": "^6.0.1",
     "gulp-uglify": "^1.4.2",
     "gulp-usemin": "^0.3.15",
-    "jasmine-core": "^2.3.4",
-    "jshint-stylish": "^2.0.1",
-    "karma": "^0.13.15",
-    "karma-chrome-launcher": "^0.2.1",
-    "karma-jasmine": "^0.3.6",
-    "karma-phantomjs-launcher": "^0.2.1",
-    "phantomjs": "^1.9.19"
+    "jshint-stylish": "^2.0.1"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "angular-bootstrap": "^0.12.2",
-    "angular-ui-bootstrap": "^2.5.0",
+    "bootstrap": "3.3.7",
+    "font-awesome": "^4.7.0",
     "html2canvas": "^0.5.0-beta4",
-    "multer": "^1.3.0",
-    "multiparty": "^4.1.3",
     "ng-draggable": "^1.0.0",
     "ng-file-upload": "^12.2.13",
-    "util": "^0.10.3"
+    "angular": "~1.5.5",
+    "angular-ui-router": "~0.2.18",
+    "angular-route": "~1.5.5",
+    "angular-resource": "~1.5.5"
   }
 }
