@@ -7,24 +7,14 @@
                 <li class="active">Create look</li>
             </ul>
         </div>
-        
     </div> 
-    
-    
-    
-    
-    
+        
     <div class="row row-content">
-        
-        
         <div class="col-xs-12">
             <h3>Create new look</h3>
             <p class="text-muted">To create a look drag clothes from wardrobe to look constructor</p>
-        </div> 
-        
-        <div class="col-xs-12"><hr></div>
-                        
-        
+            <hr>
+        </div>                    
         <div class="col-xs-9" ng-if="!showClothes">
             <div class="alert alert-warning">
                 <strong> Log in to create looks</strong>
@@ -32,143 +22,108 @@
         </div>
         
         
-        
-       <!-- gallery -- the source of clothes -->
-        
-            
+       <!-- gallery (available clothes list) -->
         <div class="col-md-4" ng-if="showClothes">
-           <div ng-drop="true" 
-                ng-drop-success="onDropCompleteRemove($data,$event)"
-                id="gallery-container">
-            <h4 class="text-muted">Wardrobe</h4>
-            <p class="text-muted" style="padding: 10px;">Search <input type="text" ng-model="filtText"></p>   
-               
+           <div ng-drop="true" ng-drop-success="onDropCompleteRemove($data,$event)" id="gallery-container">
+                <h4 class="text-muted">Wardrobe</h4>
+                <p class="text-muted" style="padding: 10px;">
+                    Search <input type="text" ng-model="filtText">
+                </p>   
                 <div ng-repeat="clothes in clothes | filter:filtText" >
-                    <img droppable src="{{clothes.image}}" alt="" 
-                         ng-drag="true"
-                         ng-drag-data="clothes"
-                         style="max-height: 300px; max-width: 250px"> 
+                    <img droppable src="{{clothes.image}}" alt="" ng-drag="true"
+                         ng-drag-data="clothes" style="max-height: 300px; max-width: 250px"> 
                 </div>  
             </div> 
         </div>
-        
-        
-            <!-- main dropzone - lookConstructor window  
-                 a simple 1-d array. You can move clothes in and out of dropzone. Vertical size is auto-adjusted to contents --> 
-        
-        <div class="col-md-6" id="lookConstructor" ng-if="showClothes">
-            
-            <div class="col-md-6">
+    
 
-                <div ng-drop="true" 
-                     ng-drop-success="onDropComplete($data,$event)"
+        <!-- dropzones --> 
+        <div class="col-md-6" id="lookConstructor" ng-if="showClothes">
+            <!-- dropzone 1 -->
+            <div class="col-md-6">
+                <div ng-drop="true" ng-drop-success="onDropComplete($data,$event)"
                       id="lookConstructorLeft"> 
 
                     <div style="padding-top: 10px"></div>
-
                     <div ng-repeat="clothes in clothesDrop" 
-                         ng-drag="true" 
-                         ng-drag-data="clothes" 
+                         ng-drag="true" ng-drag-data="clothes" 
                          ng-drag-success="onDragComplete($data,$event)">
-
                         <img droppable src="{{clothes.image}}" alt="" ng-style={{imageSizeLimit}}>        
                     </div>
                 </div>  
             </div>
 
             <!-- dropzone 2 -->
-
             <div class="col-md-6">
-
-                <div ng-drop="true" 
-                     ng-drop-success="onDropComplete2($data,$event)"
-                      id="lookConstructorRight"> 
+                <div ng-drop="true" ng-drop-success="onDropComplete2($data,$event)"
+                      id="lookConstructorRight">
 
                     <div style="padding-top: 10px"></div>
-
                     <div ng-repeat="clothes in clothesDrop2" 
-                         ng-drag="true" 
-                         ng-drag-data="clothes" 
+                         ng-drag="true" ng-drag-data="clothes" 
                          ng-drag-success="onDragComplete2($data,$event)">
-
                         <img droppable src="{{clothes.image}}" alt="" ng-style={{imageSizeLimit}}>        
                     </div>
                 </div>  
             </div>
-            
         </div>
-
     </div>
         
-    
-    
-         <!-- form for look details that saves look to gallery --> 
-    
+        
+    <!-- save to gallery form --> 
     <div class="row row-content" ng-if="showClothes">     
     
         <div class="col-xs-12" style="padding-bottom: 20px">
             <h3>Save look to gallery</h3>
         </div> 
+        <form name="newLookForm" class="form-horizontal" ng-submit="addLook()">
+            <div class="form-group col-xs-12 col-sm-4"> 
+                <div class="row">
+                    <div class="form-group col-xs-12">
+                        <label class="sr-only" for="name">Name</label>
+                        <input type="text" class="form-control input" 
+                        id="name" placeholder="Look name" ng-model="newlook.name" required>
+                    </div>
+                </div>
 
-        
-     <form name="newLookForm" class="form-horizontal" ng-submit="addLook()">
+                <div class="row">
+                    <div class="form-group col-xs-12 text-muted">
+                        <select class="form-control"
+                        ng-model="newlook.season"
+                        ng-options="season.value as season.label for season in seasons">
+                            <option value="">Choose season</option>
+                        </select>
+                    </div>
+                </div>
 
-        <div class="form-group col-xs-12 col-sm-4"> 
-            
-            <div class="row">
-                <div class="form-group col-xs-12">
-                    
-                    <label class="sr-only" for="name">Name</label>
-                    <input type="text" class="form-control input" id="name" placeholder="Look name" ng-model="newlook.name" required>
+                <div class="row">
+                    <div class="form-group col-xs-12">
+                        <label class="sr-only" for="description">Description</label>
+                        <textarea class="form-control input" id="description" 
+                        placeholder="Look description" rows="4" ng-model="newlook.description"></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="button-group col-xs-12">
+                        <button type="button" ng-click="takeLookScreenshot()" class="btn btn-default btn-md">Get image</button> 
+                        <button type="submit" class="btn btn-info btn-md">
+                            Save to gallery</button>
+                    </div>
+                </div> 
+            </div>
+
+            <div class="form-group col-xs-12 col-sm-7 col-sm-offset-4"> 
+                <div style="height: 850px; text-align: center;" id="box1" ng-model="newlook.image">
+                    <p class="text-muted" style="padding: 20px">Click on the button to get look image</p> 
                 </div>
             </div>
-
-            <div class="row">
-                <div class="form-group col-xs-12 text-muted">
-                    
-                    <select class="form-control"
-                       ng-model="newlook.season"
-                       ng-options="season.value as season.label for season in seasons">
-                        <option value="">Choose season</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group col-xs-12">
-                    
-                    <label class="sr-only" for="description">Description</label>
-                    <textarea class="form-control input" id="description" placeholder="Look description" rows="4" ng-model="newlook.description"></textarea>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="button-group col-xs-12">
-                    <button type="button" ng-click="takeLookScreenshot()" class="btn btn-default btn-md">Get image</button> 
-                    <button type="submit" class="btn btn-info btn-md">
-                        Save to gallery</button>
-                </div>
-            </div>
-            
-        </div>
-
-         
-        <div class="form-group col-xs-12 col-sm-7 col-sm-offset-4"> 
-            <div style="height: 850px; text-align: center;" id="box1" ng-model="newlook.image">
-                <p class="text-muted" style="padding: 20px">Click on the button to get look image</p> 
-            </div>
-        </div>
-
-    </form>
+        </form>
         
-        
-        <!--  container for preview of look image generated by html2canvas from dropzone when "Get look image" button is clicked --> 
-        
-
-
-    </div>
-    
-    </div>
+        <!-- container for preview of look image is generated by html2canvas from dropzone 
+            when "Get look image" button is clicked --> 
+    </div>  
+</div>
 
 
 
