@@ -2,10 +2,7 @@
 
 angular.module('yourStyleApp')
 
-.constant("baseURL", "https://your-style.net/") //
-
-
-
+.constant("baseURL", "https://your-style.net/") //localhost:3000
 
      // for /wardrobe page
 .factory('clothesFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
@@ -15,10 +12,7 @@ angular.module('yourStyleApp')
                 method: 'PUT'
             }
     }); 
-    
 }])
-
-
 
      // for /createlook page
 
@@ -28,12 +22,10 @@ angular.module('yourStyleApp')
 .factory('html2canvasAngular', ['$q', function($q) {
     
 	self={
-
 		renderBody: function(){
 			var deferred = $q.defer();
 
                 // html2canvas(which element to take screenshot, options);
-            
 			html2canvas(document.getElementById('lookConstructor'), {
 				onrendered: function(canvas) {
                     
@@ -58,8 +50,6 @@ angular.module('yourStyleApp')
 }])
 
 
-
-
 .factory('looksFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
     
     return $resource(baseURL + "looks/:id", null, {
@@ -70,9 +60,7 @@ angular.module('yourStyleApp')
         });
 }])
 
-
 // Used for user authentication
-
 
 .factory('$localStorage', ['$window', function ($window) {
     
@@ -97,8 +85,6 @@ angular.module('yourStyleApp')
     }
 }])
 
-
-
 .factory('AuthFactory', ['$resource', '$http', '$state', '$localStorage', '$rootScope', '$window', 'baseURL', 'ngDialog', function ($resource, $http, $state, $localStorage, $rootScope, $window, baseURL, ngDialog) {
     
     var authFac = {};
@@ -120,12 +106,10 @@ angular.module('yourStyleApp')
     }
   }
  
-
     function storeUserCredentials(credentials) {   
         $localStorage.storeObject(TOKEN_KEY, credentials);
         useCredentials(credentials);
     }
- 
     
   function useCredentials(credentials) {
     isAuthenticated = true;
@@ -133,8 +117,7 @@ angular.module('yourStyleApp')
     authToken = credentials.token;
  
         // sets the token as a default header for all requests
-    $http.defaults.headers.common['x-access-token'] = authToken;
-               
+    $http.defaults.headers.common['x-access-token'] = authToken;        
   }
  
   function destroyUserCredentials() {
@@ -144,8 +127,6 @@ angular.module('yourStyleApp')
       $http.defaults.headers.common['x-access-token'] = authToken;
       $localStorage.remove(TOKEN_KEY);
   }
-     
-    
     
     authFac.login = function(loginData) {   
         // loginData - coming from controller (username, password)
@@ -180,9 +161,7 @@ angular.module('yourStyleApp')
            }
         );
     };
-    
-
-    
+       
     
     authFac.logout = function() {
         $resource (baseURL + "users/logout")
@@ -190,8 +169,6 @@ angular.module('yourStyleApp')
         });
         destroyUserCredentials();   // see above in Local Storage
     };
-        
-
     
     authFac.register = function (registerData) {
         
@@ -226,7 +203,6 @@ angular.module('yourStyleApp')
         );
     };
     
-    
     // used in controller for header (what button to show - login or logout)
     
     authFac.isAuthenticated = function() {
@@ -241,6 +217,5 @@ angular.module('yourStyleApp')
     loadUserCredentials();
     
     return authFac;
-    
 }])
 ;

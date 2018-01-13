@@ -3,12 +3,9 @@
 angular
     .module('yourStyleApp', ['ui.router', 'ui.bootstrap', 'ngResource', 'ngDialog', 'ngDraggable', 'html2canvasAngular', 'ngFileUpload']) 
 
-
     .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
-        
-            // route for the home page
-        
+               
             .state('app', {
                 url:'/',
                 views: {
@@ -26,10 +23,7 @@ angular
                 }
 
             })
-    
-    
-          // routes for other three pages
-    
+       
             .state('app.clothes', {
                 url:'clothes',
                 views: {
@@ -40,7 +34,6 @@ angular
                 }
             })    
         
-    
             .state('app.looks', {
                 url:'looks',
                 views: {
@@ -50,7 +43,6 @@ angular
                     }
                 }
             })
-    
     
             .state('app.createlook', {
                 url:'createlook',
