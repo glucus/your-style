@@ -33,11 +33,10 @@
   top: 0;
 }
 
-
+/*navigation  */
 .navbar-inverse {
   color: ghostwhite;
 }
-
 
 .navbar-inverse .navbar-nav > .active > a {
   color: darkorange;
@@ -58,37 +57,11 @@
   color: darkorange;
 }
 
-/*
-.navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
-  background-color: #303f9f;
-  color: #eeeeee;
-}
-.navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover {
-  color: #000000;
-}
-.navbar-inverse .navbar-nav .open .dropdown-menu {
-  background-color: #303f9f;
-  color: #eeeeee;
-}
-*/ 
 
-
+/* */
 [hidden] {
   display: none !important;
 }
-
-
-/* for userpic centering and cropping */
-.userpic {
-  width: 150px;
-  height: 150px;
-}
-
-.object-fit_cover {
-  object-fit: cover
-}
-/* --- */
-
 
 address {
   color: #0f0f0f;
@@ -127,11 +100,19 @@ body {
     background-color: #CB2027
 }
 
-btn-circle {
-    border-radius: 10px;
+
+/* */
+
+.padding-top-10 {
+  padding-top: 10px;
 }
 
-/* new styles for clothes page */
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+
+/* clothes page */
 
 .max-width-200 {
   max-width: 200px; 
@@ -143,10 +124,6 @@ btn-circle {
 
 ul.nav-pills li a {
   text-align: left;
-}
-
-p.image-upload-progress {
-  padding-top: 10px;
 }
 
 #wardrobe {
@@ -163,36 +140,62 @@ p.image-upload-progress {
   box-shadow: none;
 }
 
-/* /// */
 
+ /* looks page */ 
+ 
 #looksgallery {
     overflow-y: scroll;
     height: 1200px;
 }
 
+#looksgallery img {
+    max-height: 400px;
+}
 
-/* --- for draggable objects and dropzones --- */
+#looksgallery div.thumbnail {
+    margin-right: 20 px;
+    border: 0px none;
+    box-shadow: none;
+}
+
+#looksgallery div.thumbnail div.caption {
+  padding-bottom: 10px;  
+  padding-left: 20px;
+}
+
+
+ /* createlook page */ 
 
 #gallery-container {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 700px;
-    max-width: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 700px;
+  max-width: 300px;
 }
 
-/*
-#lookConstructorLeft {
-    border-top: solid 1px lightgray; 
-    border-bottom: solid 1px lightgray; 
-    border-left: solid 1px lightgray; 
+#gallery-container p {
+  padding: 10px;
 }
 
-#lookConstructorRight {
-    border-top: solid 1px lightgray; 
-    border-bottom: solid 1px lightgray; 
-    border-right: solid 1px lightgray; 
-} */
+#gallery-container img {
+max-height: 300px;
+max-width: 250px;
+}
 
+#box1 {
+    height: 850px;
+    text-align: center;
+}
+
+#box1 p {
+  padding: 20px;
+}
+
+div.save-to-gallery > div {
+    padding-bottom: 20px;
+}
+
+/* --- for draggable objects --- */
 
 [ng-drag].drag-over {
     border:solid 1px lightblue;
@@ -216,7 +219,6 @@ p.image-upload-progress {
 [ng-drop].drag-enter {
     border:solid 2px lightblue;
 }
-
 
 #canvas-wrap { position:relative; width:800px; height:600px }
 #canvas-wrap canvas { position:absolute; top:0; left:0; z-index:0 }

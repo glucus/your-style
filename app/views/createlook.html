@@ -26,12 +26,12 @@
         <div class="col-md-4" ng-if="showClothes">
            <div ng-drop="true" ng-drop-success="onDropCompleteRemove($data,$event)" id="gallery-container">
                 <h4 class="text-muted">Wardrobe</h4>
-                <p class="text-muted" style="padding: 10px;">
+                <p class="text-muted">
                     Search <input type="text" ng-model="filtText">
                 </p>   
                 <div ng-repeat="clothes in clothes | filter:filtText" >
                     <img droppable src="{{clothes.image}}" alt="" ng-drag="true"
-                         ng-drag-data="clothes" style="max-height: 300px; max-width: 250px"> 
+                         ng-drag-data="clothes"> 
                 </div>  
             </div> 
         </div>
@@ -43,8 +43,7 @@
             <div class="col-md-6">
                 <div ng-drop="true" ng-drop-success="onDropComplete($data,$event)"
                       id="lookConstructorLeft"> 
-
-                    <div style="padding-top: 10px"></div>
+                    <div class="padding-top-10"></div>
                     <div ng-repeat="clothes in clothesDrop" 
                          ng-drag="true" ng-drag-data="clothes" 
                          ng-drag-success="onDragComplete($data,$event)">
@@ -58,7 +57,7 @@
                 <div ng-drop="true" ng-drop-success="onDropComplete2($data,$event)"
                       id="lookConstructorRight">
 
-                    <div style="padding-top: 10px"></div>
+                    <div class="padding-top-10"></div>
                     <div ng-repeat="clothes in clothesDrop2" 
                          ng-drag="true" ng-drag-data="clothes" 
                          ng-drag-success="onDragComplete2($data,$event)">
@@ -71,9 +70,9 @@
         
         
     <!-- save to gallery form --> 
-    <div class="row row-content" ng-if="showClothes">     
+    <div class="row row-content save-to-gallery" ng-if="showClothes">     
     
-        <div class="col-xs-12" style="padding-bottom: 20px">
+        <div class="col-xs-12">
             <h3>Save look to gallery</h3>
         </div> 
         <form name="newLookForm" class="form-horizontal" ng-submit="addLook()">
@@ -106,16 +105,19 @@
 
                 <div class="row">
                     <div class="button-group col-xs-12">
-                        <button type="button" ng-click="takeLookScreenshot()" class="btn btn-default btn-md">Get image</button> 
+                        <button type="button" ng-click="takeLookScreenshot()" class="btn btn-default btn-md">
+                         Get image</button> 
                         <button type="submit" class="btn btn-info btn-md">
-                            Save to gallery</button>
+                         Save to gallery</button>
                     </div>
                 </div> 
             </div>
 
             <div class="form-group col-xs-12 col-sm-7 col-sm-offset-4"> 
-                <div style="height: 850px; text-align: center;" id="box1" ng-model="newlook.image">
-                    <p class="text-muted" style="padding: 20px">Click on the button to get look image</p> 
+                <div id="box1" ng-model="newlook.image">
+                    <p class="text-muted">
+                        Click on the button to get look image
+                    </p> 
                 </div>
             </div>
         </form>

@@ -22,23 +22,24 @@
         </div>
         
         <div class="col-xs-12 col-sm-2"> 
-            <a ui-sref="app.createlook" class="btn btn-md btn-success" style="margin-top: 20px" role="button">
+            <a ui-sref="app.createlook" class="btn btn-md btn-success margin-top-20" role="button">
             <i class="fa fa-lg fa-plus-circle" aria-hidden="true"></i>&nbsp; Add new look</a>
         </div>
         <div class="col-xs-12"><hr></div>
         
         <div class="col-xs-12" id="looksgallery">
             <ul class="media-list">
-                <li class="media col-xs-12 col-sm-4" ng-repeat="look in looks"> 
-                    <!-- | filter: {postedBy.username} -->
-                    <div class="thumbnail" style="margin-right: 20 px; border: 0px none; box-shadow: none;">
-                        <div class="caption" style="padding-left: 20px; padding-bottom: 10px;">
+
+                <li class="media col-xs-12 col-sm-4" ng-repeat="look in looks"> <!-- | filter: {postedBy.username} -->
+                    <div class="thumbnail">
+                        <div class="caption">
                             <h3>{{look.name}}
-                                <button ng-click="deleteLook(look._id)" class="btn btn-link pull-right" role="button">Delete</button>
+                                <button ng-click="deleteLook(look._id)" class="btn btn-link pull-right" role="button">
+                                Delete</button>
                             </h3>
                         </div> 
-                        <img class="img-responsive" style="max-height: 400px;" ng-src={{look.image}} alt="{{look.name}}">  
-                        <div class="caption" style="padding-left: 20px;">
+                        <img class="img-responsive" ng-src={{look.image}} alt="{{look.name}}">  
+                        <div class="caption">
                             <p>{{look.description}}</p>         
                         </div> 
                     </div>
