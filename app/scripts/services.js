@@ -4,6 +4,7 @@ angular.module('yourStyleApp')
 
 .constant("baseURL", "https://your-style.net/") //"localhost:3000"
 
+
      // for /wardrobe page
 .factory('clothesFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
 
@@ -14,7 +15,8 @@ angular.module('yourStyleApp')
     }); 
 }])
 
-.service('sampleClothes', function () {
+
+.service('sampleClothesFactory', function () {
 
     var sampleClothes = [
         {
@@ -62,12 +64,14 @@ angular.module('yourStyleApp')
      this.getSampleClothes = function () {
          return sampleClothes;
      }
-});
+})
 
 
      // for /createlook page
 
-    // angular wrapper of html2canvas package    (http://html2canvas.hertzen.com/documentation.html ) from here:  https://github.com/tristansokol/html2canvas-angular
+    // angular wrapper of html2canvas package    
+    // http://html2canvas.hertzen.com/documentation.html 
+    //from here:  https://github.com/tristansokol/html2canvas-angular
 
 
 .factory('html2canvasAngular', ['$q', function($q) {
