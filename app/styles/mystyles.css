@@ -1,3 +1,5 @@
+/* general */
+
 .row-header {
   margin: 0px auto;
   padding: 0px 0px;
@@ -5,7 +7,6 @@
 .row-content {
   margin: 0px auto;
   padding: 50px 0px;
-  border-bottom: 1px ridge;
   min-height: 400px;
 }
 
@@ -15,93 +16,15 @@
   background-color: white;
 }
 
-.jumbotron {
-  margin: 0px auto;
-  padding: 30px 30px;  
-}
-
-.carousel {
-  background: #1a237e;
-}
-.carousel .item {
-  height: 300px;
-}
-.carousel .item img {
-  left: 0;
-  min-height: 300px;
-  position: absolute;
-  top: 0;
-}
-
-/*navigation  */
-.navbar-inverse {
-  color: ghostwhite;
-}
-
-.navbar-inverse .navbar-nav > .active > a {
-  color: darkorange;
-}
-.navbar-inverse .navbar-nav > .active > a:hover {
-  color: darkorange;
-}
-.navbar-inverse .navbar-nav > .active > a:focus {
-  color: darkorange;
-}
-.navbar-inverse .navbar-nav > .open > a {
-  color: darkorange;
-}
-.navbar-inverse .navbar-nav > .open > a:hover {
-  color: darkorange;
-}
-.navbar-inverse .navbar-nav > .open > a:focus {
-  color: darkorange;
-}
-
-
-/* */
-[hidden] {
-  display: none !important;
-}
-
-address {
-  color: #0f0f0f;
-  font-size: 80%;
-  margin: 0px;
-}
 body {
   align: center;
   padding: 50px 0px 0px 0px;
   z-index: 0;
 }
-.tab-content {
-  border-bottom: 1px solid #dddddd;
-  border-left: 1px solid #dddddd;
-  border-right: 1px solid #dddddd;
-  padding: 10px;
+
+[hidden] {
+  display: none !important;
 }
-.affix {
-  top: 100px;
-}
-#carouselButtons {
-  bottom: 0px;
-  position: absolute;
-  right: 0px;
-}
-
-/* additional social buttons style */
-
-.btn-youtube{color:#fff;background-color:#DC2725;border-color:rgba(0,0,0,0.2)}.btn-youtube:hover,.btn-youtube:focus,.btn-youtube:active,.btn-youtube.active,.open>.dropdown-toggle.btn-youtube{color:#fff;background-color:#B21E1C;border-color:rgba(0,0,0,0.2)}
-.btn-youtube:active,.btn-youtube.active,.open>.dropdown-toggle.btn-youtube{background-image:none}
-.btn-youtube.disabled,.btn-youtube[disabled],fieldset[disabled] .btn-youtube,.btn-youtube.disabled:hover,.btn-youtube[disabled]:hover,fieldset[disabled] .btn-youtube:hover,.btn-youtube.disabled:focus,.btn-youtube[disabled]:focus,fieldset[disabled] .btn-youtube:focus,.btn-youtube.disabled:active,.btn-youtube[disabled]:active,fieldset[disabled] .btn-youtube:active,.btn-youtube.disabled.active,.btn-youtube[disabled].active,fieldset[disabled] .btn-youtube.active{background-color:#DC2725;border-color:rgba(0,0,0,0.2)}
-.btn-youtube .badge{color:#DC2725;background-color:#fff}
-
-.btn-pinterest {
-    color: white;
-    background-color: #CB2027
-}
-
-
-/* */
 
 .padding-top-10 {
   padding-top: 10px;
@@ -123,13 +46,27 @@ body {
   margin-top: 20px;
 }
 
+/* header section */
+
+.jumbotron {
+  margin: 0px auto;
+  padding: 30px 30px;  
+}
+
+.navbar-inverse {
+  color: ghostwhite;
+}
+.navbar-inverse .navbar-nav > .active > a {
+  color: darkorange;
+}
+
 header h1 {
   padding-top: 20px;
   padding-bottom: 10px;
 }
 
 
-/* home */
+/* home page */
 
 #homepage div.thumbnail {
   margin-right: 40 px;
@@ -148,6 +85,13 @@ header h1 {
 
 
 /* clothes page */
+
+.tab-content {
+  border-bottom: 1px solid #dddddd;
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  padding: 10px;
+}
 
 .max-width-200 {
   max-width: 200px; 
@@ -226,11 +170,22 @@ max-width: 250px;
   padding: 20px;
 }
 
+#canvas-wrap {
+  position: relative; 
+  width: 800px; 
+  height: 600px;
+}
+
+#canvas-wrap canvas {
+   position: absolute; 
+   top: 0; 
+   left: 0; 
+   z-index: 0
+}
+
 div.save-to-gallery > div {
     padding-bottom: 20px;
 }
-
-/* --- for draggable objects --- */
 
 [ng-drag].drag-over {
     border:solid 1px lightblue;
@@ -255,10 +210,32 @@ div.save-to-gallery > div {
     border:solid 2px lightblue;
 }
 
-#canvas-wrap { position:relative; width:800px; height:600px }
-#canvas-wrap canvas { position:absolute; top:0; left:0; z-index:0 }
 
+/* footer */
 
+/* additional social buttons style */
 
-
-
+.btn-youtube {
+  color:#fff;
+  background-color:#DC2725;
+  border-color:rgba(0,0,0,0.2);
+}
+.btn-youtube:hover,.btn-youtube:focus,.btn-youtube:active,.btn-youtube.active,.open>.dropdown-toggle.btn-youtube {
+  color:#fff;
+  background-color:#B21E1C;
+  border-color:rgba(0,0,0,0.2);
+}
+.btn-youtube:active,.btn-youtube.active,.open>.dropdown-toggle.btn-youtube {
+  background-image:none;
+}
+.btn-youtube.disabled,.btn-youtube[disabled],fieldset[disabled] .btn-youtube,.btn-youtube.disabled:hover,.btn-youtube[disabled]:hover,fieldset[disabled] .btn-youtube:hover,.btn-youtube.disabled:focus,.btn-youtube[disabled]:focus,fieldset[disabled] .btn-youtube:focus,.btn-youtube.disabled:active,.btn-youtube[disabled]:active,fieldset[disabled] .btn-youtube:active,.btn-youtube.disabled.active,.btn-youtube[disabled].active,fieldset[disabled] .btn-youtube.active {
+  background-color:#DC2725;
+  border-color:rgba(0,0,0,0.2);
+}
+.btn-youtube .badge { color:#DC2725;
+  background-color:#fff
+}
+.btn-pinterest {
+    color: white;
+    background-color: #CB2027
+}
