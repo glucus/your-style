@@ -1,65 +1,53 @@
 
-    <div class="container">
-        
-        <div class="row">
-            <div class="col-xs-12">
-               <ul class="breadcrumb">
-                   <li><a href="index.html">Home</a></li>
-                   <li class="active">Looks</li>
-               </ul>
-            </div>
+<div class="container">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Looks</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="row row-content" ng-if="!showLooks">
+        <div class="col-xs-12">
+            <h3>Connecting to server...</h3>
+        </div>
+    </div>
+    
+    <div class="row row-content" ng-if="showLooks"> 
+        <div class="col-xs-12 col-sm-10">
+            <h3>Looks gallery</h3>
         </div>
         
-        <div class="row row-content" ng-if="!showLooks">
-            <div class="col-xs-12">
-                    <h3>Connecting to server...</h3>
-            </div>
+        <div class="col-xs-12 col-sm-2"> 
+            <a ui-sref="app.createlook" class="btn btn-md btn-success" style="margin-top: 20px" role="button">
+            <i class="fa fa-lg fa-plus-circle" aria-hidden="true"></i>&nbsp; Add new look</a>
         </div>
+        <div class="col-xs-12"><hr></div>
         
-        
-        <div class="row row-content" ng-if="showLooks">
-            
-            <div class="col-xs-12 col-sm-10">
-                <h3>Looks gallery</h3>
-            </div>
-            
-            <div class="col-xs-12 col-sm-2"> 
-                <a ui-sref="app.createlook" class="btn btn-md btn-success" style="margin-top: 20px" role="button">
-                    <i class="fa fa-lg fa-plus-circle" aria-hidden="true"></i>&nbsp; Add new look</a>
-            </div>
-            <div class="col-xs-12"><hr></div>
-            
-            
-            
-           <div class="col-xs-12" id="looksgallery">
-                <ul class="media-list"> 
-
-                    <li class="media col-xs-12 col-sm-4" ng-repeat="look in looks"> 
-                      <!-- | filter: {postedBy.username} -->
-                        
-                        <div class="thumbnail" style="margin-right: 20 px; border: 0px none; box-shadow: none;">
-                            
-                            <div class="caption" style="padding-left: 20px; padding-bottom: 10px;">
-                                <h3>{{look.name}}
-                                    <button ng-click="deleteLook(look._id)" class="btn btn-link pull-right" role="button">Delete</button></h3>
-                               
-
-                            </div> 
-                            
-                            <img class="img-responsive" style="max-height: 400px;" ng-src={{look.image}} alt="{{look.name}}">  
-
-                            <div class="caption" style="padding-left: 20px;">                 <p>{{look.description}}</p>             
-                                <!--<a ui-sref="app.clothes" class="btn btn-link" role="button">View details</a> -->
-                            </div> 
-                            
-                        </div>
-                    </li>
-                    
-                </ul>
-            </div>
+        <div class="col-xs-12" id="looksgallery">
+            <ul class="media-list">
+                <li class="media col-xs-12 col-sm-4" ng-repeat="look in looks"> 
+                    <!-- | filter: {postedBy.username} -->
+                    <div class="thumbnail" style="margin-right: 20 px; border: 0px none; box-shadow: none;">
+                        <div class="caption" style="padding-left: 20px; padding-bottom: 10px;">
+                            <h3>{{look.name}}
+                                <button ng-click="deleteLook(look._id)" class="btn btn-link pull-right" role="button">Delete</button>
+                            </h3>
+                        </div> 
+                        <img class="img-responsive" style="max-height: 400px;" ng-src={{look.image}} alt="{{look.name}}">  
+                        <div class="caption" style="padding-left: 20px;">
+                            <p>{{look.description}}</p>         
+                        </div> 
+                    </div>
+                </li>
+            </ul>
         </div>
- 
-      </div>
+    </div>
+    
+</div>
             
 
 
