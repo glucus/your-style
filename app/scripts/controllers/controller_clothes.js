@@ -4,7 +4,7 @@ angular.module('yourStyleApp')
 
     // wardrobe page
 
-.controller('ClothesController', ['$scope', '$state', 'clothesFactory', 'sampleClothes', 'AuthFactory','ngDialog', 'Upload', '$window', function ($scope, $state, clothesFactory, sampleClothes, AuthFactory, ngDialog, Upload, $window) {           
+.controller('ClothesController', ['$scope', '$state', 'clothesFactory', 'sampleClothesFactory', 'AuthFactory','ngDialog', 'Upload', '$window', function ($scope, $state, clothesFactory, sampleClothesFactory, AuthFactory, ngDialog, Upload, $window) {           
                 
      $scope.tab = 0;
      $scope.filtText = '';
@@ -15,7 +15,7 @@ angular.module('yourStyleApp')
     
      $scope.message = "Loading ...";
 
-     $scope.sampleClothes = sampleClothes.getSampleClothes();
+     $scope.sampleClothes = sampleClothesFactory.getSampleClothes();
     
          // gets existing clothes to the list
     
