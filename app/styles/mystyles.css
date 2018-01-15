@@ -107,9 +107,19 @@ body {
   padding-top: 10px;
 }
 
+.padding-top-40 {
+  padding-top: 40px;
+}
+
 .margin-top-20 {
   margin-top: 20px;
 }
+
+header h1 {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
 
 
 /* clothes page */
