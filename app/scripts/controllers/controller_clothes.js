@@ -30,7 +30,6 @@ angular.module('yourStyleApp')
             } else {
                 console.log (response.length);
                 $scope.clothes = response; 
-                    // response.concat($scope.sampleClothes);
                 $scope.showClothes = true;
                 $scope.showDelete = true;
             }
