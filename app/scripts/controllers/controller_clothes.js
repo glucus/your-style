@@ -76,7 +76,7 @@ angular.module('yourStyleApp')
         if (window.confirm ("Do you really want to delete this item ?")) { 
             console.log('Delete clothes', clothesid);
             clothesFactory.delete({id: clothesid});
-        //    $state.go($state.current, {}, {reload: true});
+            $state.go($state.current, {}, {reload: true});
         };
     };
     
