@@ -131,13 +131,39 @@ btn-circle {
     border-radius: 10px;
 }
 
+/* new styles for clothes page */
 
+.max-width-200 {
+  max-width: 200px; 
+}
+
+.add-clothes-button {
+  margin-top: 20px;
+}
+
+ul.nav-pills li a {
+  text-align: left;
+}
+
+p.image-upload-progress {
+  padding-top: 10px;
+}
 
 #wardrobe {
     overflow-y: scroll;
     height: 800px;
 }
 
+#wardrobe ul li img {
+  max-height: 400px;
+  max-width: 250px;
+  margin-bottom: 10 px;
+  padding-bottom: 10px;
+  border: 0px none;
+  box-shadow: none;
+}
+
+/* /// */
 
 #looksgallery {
     overflow-y: scroll;

@@ -11,7 +11,6 @@
     
     <!-- Add clothes section -->
     <div class="row row-content" ng-show="showAddClothes">
-
         <div class="col-xs-12">
             <h3>Add clothes</h3>
             <hr>
@@ -21,7 +20,7 @@
         <form class="col-xs-12 col-sm-4 inline-form" name="upload_form" ng-submit="upload(file)">  
             <div class="form-group text-muted">
                 <label class="sr-only"> Image preview </label>
-                <img class="img-responsive" style="max-width: 200px;" ngf-thumbnail="file || '/thumb.jpg'"/> 
+                <img class="img-responsive max-width-200" ngf-thumbnail="file || '/thumb.jpg'"/> 
                     <i ng-show="upload_form.file.$error.required">Image is required</i><br>
                     <i ng-show="upload_form.file.$error.maxSize">File too large 
                     {{file.size / 1000000|number:1}}MB: max 10M</i>
@@ -32,7 +31,7 @@
                         ngf-pattern="'image/*'" accept="image/*" ngf-max-size="10MB" required>
                 </label>
                 <button type="submit" class="btn btn-md btn-info">Upload</button>
-                <p style="padding-top: 10px">{{progress}}</p> 
+                <p class="image-upload-progress">{{progress}}</p> 
             </div>
         </form>
            
@@ -77,23 +76,21 @@
         </form>    
     </div>
     
-
     <!-- Main section with wardrobe -->
     <div class="row row-content">
 
         <div class="col-xs-12 col-sm-9">
             <h3>Wardrobe</h3>
         </div>
-        <div class="col-xs-12 col-sm-3 btn-group" ng-if="showClothes">
-            <a ng-click="addSampleClothes()" class="btn btn-md btn-default" style="margin-top: 20px" role="button">
+        <div class="col-xs-12 col-sm-3 btn-group"> 
+            <a ng-click="addSampleClothes()" class="btn btn-md btn-default add-clothes-button" role="button">
                 Sample clothes
             </a>
-            <a ng-click="addClothes()" class="btn btn-md btn-success" style="margin-top: 20px" role="button">
+            <a ng-click="addClothes()" class="btn btn-md btn-success add-clothes-button" role="button">
                 <i class="fa fa-lg fa-plus-circle" aria-hidden="true"></i>&nbsp; New item
             </a>
         </div>
         <div class="col-xs-12"><hr></div> 
-
 
         <!-- tabbed categories menu -->
         <div class="col-xs-12 col-sm-3" ng-if="showClothes">
@@ -103,11 +100,10 @@
             </button>
             <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed"> 
                 <ul class="nav nav-pills nav-stacked">  
-                    <li role="presentation" 
-                        ng-class="{active:isSelected(0)}">
-                    <a ng-click="select(0)" aria-controls="all categories"
-                        role="tab" class="btn btn-link" 
-                       style="text-align: left">All </a></li>
+                    <li role="presentation" ng-class="{active:isSelected(0)}">
+                        <a ng-click="select(0)" aria-controls="all categories"
+                            role="tab" class="btn btn-link">All</a>
+                    </li>
                 </ul>
                 <ul class="nav nav-pills nav-stacked" ng-repeat="category in categories track by category.id">  
                     <li role="presentation"
@@ -124,14 +120,13 @@
             </div>
         </div> 
         
-
         <!-- tab contents -->
-        <div class="col-xs-12 col-sm-9" ng-if="showClothes" id="wardrobe">    
+        <div class="col-xs-12 col-sm-9" ng-if="showClothes" id="wardrobe">
             <ul class="media-list tab-pane fade in active">
                 <li class="media" ng-repeat="clothes in clothes | filter:filtText"> 
                     <div class="col-md-5 col-sm-12 col-xs-12">
                         <div class="media-left media-middle">
-                            <img class="media-object img-thumbnail img-responsive" style="max-height: 400px; max-width: 250px; margin-bottom: 10 px; border: 0px none; box-shadow: none; padding-bottom: 10px"
+                            <img class="media-object img-thumbnail img-responsive" 
                             ng-src={{clothes.image}} alt="{{clothes.name}}">
                         </div>
                     </div>
@@ -149,5 +144,5 @@
             </ul>
         </div>
     </div>
-    
+
 </div>

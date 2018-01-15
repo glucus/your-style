@@ -2,7 +2,7 @@
 
 angular.module('yourStyleApp')
 
-.constant("baseURL", "https://your-style.net/") //localhost:3000
+.constant("baseURL", "https://your-style.net/") //"localhost:3000"
 
      // for /wardrobe page
 .factory('clothesFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
