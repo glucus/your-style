@@ -59,6 +59,9 @@ body {
 .navbar-inverse .navbar-nav > .active > a {
   color: darkorange;
 }
+.navbar-inverse .navbar-nav > .active > a:hover {
+  color: darkorange;
+}
 
 header h1 {
   padding-top: 20px;

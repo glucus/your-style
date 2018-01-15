@@ -14,6 +14,57 @@ angular.module('yourStyleApp')
     }); 
 }])
 
+.service('sampleClothes', function () {
+
+    var sampleClothes = [
+        {
+            name: 'beige sweater',
+            image: 'images/beigesweater.jpg',
+            category: 'tops'
+         },
+        {
+            name: 'blue shirt',
+            image: 'images/blueshirt.jpg',
+            category: 'tops'
+         },
+        {
+            name: 'dark jeans',
+            image: 'images/jeansandboots.jpg',
+            category: 'jeans and pants'
+         },
+        {
+            name: 'blue jeans',
+            image: 'images/jeansandsneakers.jpg',
+            category: 'jeans and pants'
+         },
+        {
+            name: 'black boots',
+            image: 'images/blackboots.jpg',
+            category: 'shoes'
+         },
+        {
+            name: 'leather belt',
+            image: 'images/belt.jpg',
+            category: 'accessories'
+         },
+        {
+            name: 'brown bag',
+            image: 'images/brownbag.jpg',
+            category: 'bags'
+         },
+        {
+            name: 'green hat',
+            image: 'images/hat.jpg',
+            category: 'accessories'
+         }
+     ];
+    
+     this.getSampleClothes = function () {
+         return sampleClothes;
+     }
+});
+
+
      // for /createlook page
 
     // angular wrapper of html2canvas package    (http://html2canvas.hertzen.com/documentation.html ) from here:  https://github.com/tristansokol/html2canvas-angular
