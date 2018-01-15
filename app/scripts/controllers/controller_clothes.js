@@ -4,25 +4,21 @@ angular.module('yourStyleApp')
 
     // wardrobe page
 
-.controller('ClothesController', ['$scope', '$state', 'clothesFactory', 'sampleClothesFactory', 'AuthFactory','ngDialog', 'Upload', '$window', function ($scope, $state, clothesFactory, sampleClothesFactory, AuthFactory, ngDialog, Upload, $window) {           
-                
+.controller('ClothesController', ['$scope', '$state', 'clothesFactory', 'sampleClothesFactory', 'AuthFactory','ngDialog', 'Upload', '$window', function ($scope, $state, clothesFactory, sampleClothesFactory, AuthFactory, ngDialog, Upload, $window) {                    
      $scope.tab = 0;
      $scope.filtText = '';
      $scope.isNavCollapsed = true;
     
      $scope.showClothes = false;
      $scope.showDelete = false;
-    
      $scope.message = "Loading ...";
 
      $scope.sampleClothes = sampleClothesFactory.getSampleClothes();
     
          // gets existing clothes to the list
-    
      clothesFactory.query(
         function (response) {
             if (response.length == 0) {
-                
                 console.log (response.length);
                 $scope.clothes = $scope.sampleClothes;
                 $scope.showClothes = true;
@@ -34,17 +30,15 @@ angular.module('yourStyleApp')
                 $scope.showDelete = true;
             }
         },
-         
         function (response) {
             $scope.message = "Error: " + response.status + " " + response.statusText;
         }); 
     
+
         // for tab menu 
-    
     $scope.collapseNav = function () {
        $scope.isNavCollapsed = !$scope.isNavCollapsed;
     };
-    
     
     $scope.select = function (setTab) {
         $scope.tab = setTab;
@@ -69,23 +63,20 @@ angular.module('yourStyleApp')
             $scope.filtText = "other";   
         } else {
             $scope.filtText = "";
-        }
-        
+        } 
         $scope.isNavCollapsed = !$scope.isNavCollapsed;
     };
 
     $scope.isSelected = function (checkTab) {
         return ($scope.tab === checkTab);
     };
- 
         
     $scope.deleteClothes = function(clothesid) {
         
-        if ( window.confirm ("Do you really want to delete this item ?")) { 
-            
+        if (window.confirm ("Do you really want to delete this item ?")) { 
             console.log('Delete clothes', clothesid);
             clothesFactory.delete({id: clothesid});
-            $state.go($state.current, {}, {reload: true});
+        //    $state.go($state.current, {}, {reload: true});
         };
     };
     
