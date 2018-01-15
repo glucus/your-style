@@ -107,8 +107,16 @@ body {
   padding-top: 10px;
 }
 
+.padding-top-20 {
+  padding-top: 20px;
+}
+
 .padding-top-40 {
   padding-top: 40px;
+}
+
+.padding-bottom-20 {
+  padding-bottom: 20px;
 }
 
 .margin-top-20 {
@@ -120,6 +128,23 @@ header h1 {
   padding-bottom: 10px;
 }
 
+
+/* home */
+
+#homepage div.thumbnail {
+  margin-right: 40 px;
+  border: 0px none;
+  box-shadow: none;
+}
+
+#homepage div.thumbnail img { 
+  height: 500px;
+}
+
+#homepage div.thumbnail div.caption {
+  padding-left: 20px;
+  padding-bottom: 20px; 
+}
 
 
 /* clothes page */
