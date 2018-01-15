@@ -1,168 +1,10 @@
 'use strict';
-
 angular.module('yourStyleApp')
 
 .constant("baseURL", "https://your-style.net/") //"localhost:3000"
 
 
-     // for /wardrobe page
-.factory('clothesFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
-
-    return $resource (baseURL + "clothes/:id", null, {
-            'update': {
-                method: 'PUT'
-            }
-    }); 
-}])
-
-.service('sampleClothes', function () {
-
-    var sampleClothes = [
-        {
-            name: 'beige sweater',
-            image: 'images/beigesweater.jpg',
-            category: 'tops'
-         },
-        {
-            name: 'blue shirt',
-            image: 'images/blueshirt.jpg',
-            category: 'tops'
-         },
-        {
-            name: 'dark jeans',
-            image: 'images/jeansandboots.jpg',
-            category: 'jeans and pants'
-         },
-        {
-            name: 'blue jeans',
-            image: 'images/jeansandsneakers.jpg',
-            category: 'jeans and pants'
-         },
-        {
-            name: 'black boots',
-            image: 'images/blackboots.jpg',
-            category: 'shoes'
-         },
-        {
-            name: 'leather belt',
-            image: 'images/belt.jpg',
-            category: 'accessories'
-         },
-        {
-            name: 'brown bag',
-            image: 'images/brownbag.jpg',
-            category: 'bags'
-         },
-        {
-            name: 'green hat',
-            image: 'images/hat.jpg',
-            category: 'accessories'
-         }
-     ];
-    
-     this.getSampleClothes = function () {
-         return sampleClothes;
-     }
-})
-
-
-.service('clothesCategories', function() {
-
-    var clothesCategories = [
-        {
-            value: "tops",
-            label: "Tops",
-            id: 1
-        }, {
-            value: "jeans and pants",
-            label: "Jeans and pants",
-            id: 2
-        }, {
-            value: "jackets",
-            label: "Jackets",
-            id: 3
-        }, {
-            value: "skirts",
-            label: "Skirts",
-            id: 4
-         }, {
-            value: "dresses",
-            label: "Dresses",
-             id: 5
-         }, {
-            value: "shoes",
-            label: "Shoes",
-             id: 6
-         }, {
-            value: "bags",
-            label: "Bags",
-             id: 7
-         }, { 
-            value: "accessories",
-            label: "Accessories",
-             id: 8
-        }, {
-            value: "other",
-            label: "Other",
-            id: 9
-        }
-    ];
-    
-    this.getCategories = function() {
-        return clothesCategories;
-    }
-})
-
-
-     // for /createlook page
-
-    // angular wrapper of html2canvas package    
-    // http://html2canvas.hertzen.com/documentation.html 
-    //from here:  https://github.com/tristansokol/html2canvas-angular
-
-
-.factory('html2canvasAngular', ['$q', function($q) {
-    
-	self={
-		renderBody: function(){
-			var deferred = $q.defer();
-
-                // html2canvas(which element to take screenshot, options);
-			html2canvas(document.getElementById('lookConstructor'), {
-				onrendered: function(canvas) {
-                    
-                        // canvas is the final rendered <canvas> element
-					deferred.resolve(canvas);
-				},
-                background: '#ffffff',
-                allowTaint: true, 
-                 
-                useCORS: true, // this setting is here to allow cross-origin images (will appear on the canvas but can't be saved)
-                
-             //   height: 800, -- can be set to a specific value, if not they will be auto 
-             //   width: 600
-                
-			});      
-            
-			return deferred.promise;
-		}
-	}
-	return self;
-        
-}])
-
-
-.factory('looksFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
-    
-    return $resource(baseURL + "looks/:id", null, {
-        
-            'update': {
-                method: 'PUT'
-            }
-        });
-}])
-
-// Used for user authentication
+// $localStorage - used for user authentication
 
 .factory('$localStorage', ['$window', function ($window) {
     
@@ -187,6 +29,7 @@ angular.module('yourStyleApp')
     }
 }])
 
+
 .factory('AuthFactory', ['$resource', '$http', '$state', '$localStorage', '$rootScope', '$window', 'baseURL', 'ngDialog', function ($resource, $http, $state, $localStorage, $rootScope, $window, baseURL, ngDialog) {
     
     var authFac = {};
@@ -196,12 +39,10 @@ angular.module('yourStyleApp')
     var username = '';
     var authToken = undefined;
     
-
-      // retrieves credentials from local storage (used when app restarts)
-      // can add reissuing token here to avoid its expiration
+    // retrieves credentials from local storage (used when app restarts)
+    // can add reissuing token here to avoid its expiration
     
   function loadUserCredentials() {
-      
     var credentials = $localStorage.getObject (TOKEN_KEY,'{}');
     if (credentials.username != undefined) {
       useCredentials(credentials);
