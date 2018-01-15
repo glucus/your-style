@@ -15,8 +15,7 @@ angular.module('yourStyleApp')
     }); 
 }])
 
-
-.service('sampleClothesFactory', function () {
+.service('sampleClothes', function () {
 
     var sampleClothes = [
         {
@@ -64,6 +63,54 @@ angular.module('yourStyleApp')
      this.getSampleClothes = function () {
          return sampleClothes;
      }
+})
+
+
+.service('clothesCategories', function() {
+
+    var clothesCategories = [
+        {
+            value: "tops",
+            label: "Tops",
+            id: 1
+        }, {
+            value: "jeans and pants",
+            label: "Jeans and pants",
+            id: 2
+        }, {
+            value: "jackets",
+            label: "Jackets",
+            id: 3
+        }, {
+            value: "skirts",
+            label: "Skirts",
+            id: 4
+         }, {
+            value: "dresses",
+            label: "Dresses",
+             id: 5
+         }, {
+            value: "shoes",
+            label: "Shoes",
+             id: 6
+         }, {
+            value: "bags",
+            label: "Bags",
+             id: 7
+         }, { 
+            value: "accessories",
+            label: "Accessories",
+             id: 8
+        }, {
+            value: "other",
+            label: "Other",
+            id: 9
+        }
+    ];
+    
+    this.getCategories = function() {
+        return clothesCategories;
+    }
 })
 
 

@@ -3,7 +3,8 @@
 angular.module('yourStyleApp')
 
 // used for logging in and out
-.controller('HeaderController', ['$scope', '$state', '$rootScope', 'ngDialog', 'AuthFactory', function ($scope, $state, $rootScope, ngDialog, AuthFactory) {
+.controller('HeaderController', ['$scope', '$state', '$rootScope', 'ngDialog', 'AuthFactory', 
+function ($scope, $state, $rootScope, ngDialog, AuthFactory) {
 
     $scope.loggedIn = false;  // flip login / logout button
     $scope.username = '';
@@ -51,7 +52,6 @@ angular.module('yourStyleApp')
 }])
 
 
-    // manages the ngDialog box (used instead of login modal)
 
 .controller('LoginController', ['$scope', '$state','ngDialog', '$localStorage', 'AuthFactory', function ($scope, $state, ngDialog, $localStorage, AuthFactory) {
     
@@ -70,6 +70,7 @@ angular.module('yourStyleApp')
         ngDialog.open({ template: 'views/register.html', scope: $scope, className: 'ngdialog-theme-default', controller:"RegisterController" });
     };
 }])
+
 
 
 .controller('RegisterController', ['$scope', 'ngDialog', '$localStorage', 'AuthFactory', function ($scope, ngDialog, $localStorage, AuthFactory) {

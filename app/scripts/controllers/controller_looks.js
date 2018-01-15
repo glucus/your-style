@@ -2,17 +2,15 @@
 
 angular.module('yourStyleApp')
 
-    // Page 2 -- /looks  
+    // looks page  
 
 .controller('LooksController', ['$scope', '$state', 'looksFactory', function ($scope, $state, looksFactory) { 
-
-    $scope.filtText = '';
-    
+   
     $scope.showLooks = false;
     $scope.message = "Loading ...";
-    
-        // gets the existing looks to the gallery. 
-        
+
+    // get looks from server 
+
     looksFactory.query (
         function (response) {
             $scope.looks = response;
@@ -22,13 +20,15 @@ angular.module('yourStyleApp')
             $scope.message = "Error: " + response.status + " " + response.statusText;
         });
 
+
+    // delete look from gallery
+
     $scope.deleteLook = function(lookid) {
-        
-        if ( window.confirm ("Do you really want to delete this item?")) { 
-            
-            console.log('Delete look', lookid);
-            looksFactory.delete({id: lookid});
-            $state.go($state.current, {}, {reload: true});
+        if ( window.confirm ("Do you really want to delete this item?")) {
+            console.log ('Delete look', lookid);
+            looksFactory.delete ({id: lookid});
+            $state.go ($state.current, {}, {reload: true});
         };
     };
+
 }])
