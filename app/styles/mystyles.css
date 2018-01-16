@@ -57,6 +57,7 @@ body {
 .navbar-inverse {
   color: ghostwhite;
 }
+
 .navbar-inverse .navbar-nav > .active > a {
   color: darkorange;
 }
@@ -75,6 +76,7 @@ body {
 .navbar-inverse .navbar-nav > .open > a:focus {
   color: darkorange;
 }
+
 
 header h1 {
   padding-top: 20px;
@@ -175,6 +177,17 @@ ul.nav-pills li a {
 #gallery-container img {
 max-height: 300px;
 max-width: 250px;
+}
+
+
+#lookConstructorRight {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+#lookConstructorLeft {
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 #box1 {
