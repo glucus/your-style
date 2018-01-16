@@ -53,10 +53,26 @@ body {
   padding: 30px 30px;  
 }
 
+
 .navbar-inverse {
   color: ghostwhite;
 }
 .navbar-inverse .navbar-nav > .active > a {
+  color: darkorange;
+}
+.navbar-inverse .navbar-nav > .active > a:hover {
+  color: darkorange;
+}
+.navbar-inverse .navbar-nav > .active > a:focus {
+  color: darkorange;
+}
+.navbar-inverse .navbar-nav > .open > a {
+  color: ghostwhite;
+}
+.navbar-inverse .navbar-nav > .open > a:hover {
+  color: darkorange;
+}
+.navbar-inverse .navbar-nav > .open > a:focus {
   color: darkorange;
 }
 
@@ -160,18 +176,6 @@ ul.nav-pills li a {
 max-height: 300px;
 max-width: 250px;
 }
-
-
-#lookConstructorLeft {
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
-#lookConstructorRight {
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
 
 #box1 {
     height: 850px;
