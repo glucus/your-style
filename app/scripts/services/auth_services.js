@@ -42,11 +42,10 @@ angular.module('yourStyleApp')
     
 
     // retrieves credentials from local storage (used when app restarts)
-    // can add reissuing token here to avoid its expiration
     
   function loadUserCredentials() {
     var credentials = $localStorage.getObject (TOKEN_KEY,'{}');
-    if (credentials.authToken != undefined) { // username
+    if (credentials.username != undefined) {  
       useCredentials (credentials);
     }
   }
@@ -136,7 +135,7 @@ angular.module('yourStyleApp')
     };
     
     authFac.getUsername = function() {
-        return username;  
+        return username;         
     };
     
     loadUserCredentials();  // when app starts running
