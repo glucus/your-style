@@ -46,7 +46,7 @@ angular.module('yourStyleApp')
     
   function loadUserCredentials() {
     var credentials = $localStorage.getObject (TOKEN_KEY,'{}');
-    if (credentials.TOKEN_KEY) { // credentials.username != undefined
+    if (credentials.TOKEN_KEY != undefined) { // credentials.username 
       useCredentials(credentials);
     }
   }
