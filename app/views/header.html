@@ -15,7 +15,7 @@
                     <a ui-sref="app" ng-click="collapseNav()">Home</a></li>               
                 <li ng-class="{active: stateis('app.looks')}"><a ui-sref="app.looks" ng-click="collapseNav()">Looks </a></li> 
                 <li ng-class="{active: stateis('app.clothes')}"><a ui-sref="app.clothes" ng-click="collapseNav()">Wardrobe</a></li>
-                <li ng-class="{active: stateis('app.createlook')}"><a ui-sref="app.createlook" ng-click="collapseNav()">Create look</a></li>                                 
+                <li class="hidden-xs" ng-class="{active: stateis('app.createlook')}"><a ui-sref="app.createlook" ng-click="collapseNav()">Create look</a></li>                                 
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li ng-if="!loggedIn"><a ng-click="openLogin()">
