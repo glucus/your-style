@@ -133,7 +133,8 @@
                     <div class="col-md-7 col-sm-12 col-xs-12">
                         <div class="media-body">
                             <h3 class="media-heading">{{clothes.name}}       
-                            <button ng-click="deleteClothes(clothes._id)" class="btn btn-link btn-circle pull-right" type="button" ng-show="showDelete">
+                            <button ng-click="deleteClothes(clothes._id)" class="btn btn-link btn-circle pull-right" 
+                             type="button" id="deleteButton" ng-show="showDelete">
                                 <i class="fa fa-trash-o"></i></button>
                             </h3>
                             <p>{{clothes.description}}</p> 
