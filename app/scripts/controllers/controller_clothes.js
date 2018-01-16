@@ -14,6 +14,13 @@ function ($scope, $state, clothesFactory, sampleClothes, clothesCategories, Auth
      $scope.showDelete = false;
      $scope.message = "Loading ...";
 
+    $scope.seasons = [
+        {value: "spring", label: "Spring"},
+        {value: "summer", label: "Summer"}, 
+        {value: "autumn", label: "Autumn"}, 
+        {value: "winter", label: "Winter"}
+    ];
+
     $scope.sampleClothes = sampleClothes.getSampleClothes();
     
     // gets clothes from server, if user doesn't havy any clothes, shows sample clothes
