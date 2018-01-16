@@ -101,6 +101,28 @@ header h1 {
   padding-bottom: 20px; 
 }
 
+#homepage div.thumbnail div.caption a {
+  color:  inherit;
+  padding-left: 0px;
+  font-size: inherit;
+}
+
+#homepage div.thumbnail div.caption a:link {
+  text-decoration: none;
+}
+
+#homepage div.thumbnail div.caption a:visited {
+  text-decoration: none;
+}
+
+#homepage div.thumbnail div.caption a:hover {
+  color: darkorange;
+}
+
+#homepage div.thumbnail div.caption a:active {
+  color: darkorange;
+}
+
 
 /* clothes page */
 
@@ -125,7 +147,7 @@ header h1 {
 
 #deleteButton i {
   position: absolute;
-  top: 6px;
+  top: 7px;
   right: 8px;
 }
 
@@ -278,3 +300,39 @@ div.save-to-gallery > div {
     color: white;
     background-color: #CB2027
 }
+
+
+/* Custom settings for xs screen size */
+
+@media screen and (max-width: 767px) {
+
+  #homepage div.thumbnail img { 
+    height: 300px;
+  }
+
+  #homepage div.thumbnail div.caption {
+    padding-left: 10px;
+    padding-bottom: 0px; 
+  }
+
+  #homepage div.thumbnail div.caption h3 {
+    margin-top: 10px;
+  }
+} 
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  
+    #homepage div.thumbnail img { 
+      height: 400px;
+    }
+  
+    #homepage div.thumbnail div.caption {
+      padding-left: 10px;
+      padding-bottom: 0px; 
+    }
+  
+    #homepage div.thumbnail div.caption h3 {
+      margin-top: 10px;
+      white-space: normal;
+    }
+  } 
