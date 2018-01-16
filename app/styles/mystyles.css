@@ -125,7 +125,7 @@ header h1 {
 
 #deleteButton i {
   position: absolute;
-  top: 8px;
+  top: 6px;
   right: 8px;
 }
 
@@ -149,11 +149,11 @@ ul.nav-pills li a {
 
 
  /* looks page */ 
- 
+/* 
 #looksgallery {
     overflow-y: auto;
     height: 1200px;
-}
+}*/
 
 #looksgallery img {
     max-height: 400px;
