@@ -17,8 +17,7 @@ function ($scope, $state, clothesFactory, sampleClothes, clothesCategories, Auth
     $scope.sampleClothes = sampleClothes.getSampleClothes();
     
     // gets clothes from server, if user doesn't havy any clothes, shows sample clothes
-    
-     clothesFactory.query (
+    clothesFactory.query (
         function (response) {
             if (response.length == 0) {
                 console.log (response.length);
