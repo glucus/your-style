@@ -157,7 +157,6 @@ function ($scope, $state, clothesFactory, sampleClothes, html2canvasAngular, loo
             
             // clears the form and image div after saving
             $scope.newlook = {};
-            $scope.newLookForm.$setPristine();
             document.getElementById('box1').innerHTML = "";
             $state.go($state.current, {}, {reload: true}); 
         }); 
