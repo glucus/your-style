@@ -146,22 +146,22 @@ function ($scope, $state, clothesFactory, sampleClothes, html2canvasAngular, loo
 
 
     // saves look to gallery  
-    $scope.addLook = function () {
-                
+    $scope.addLook = function () { 
+
         document.getElementById('box1').innerHTML = ""; // clears the div
         html2canvasAngular.renderBody().then (function (canvas) {
+
             document.getElementById('box1').appendChild(canvas);
-            
             $scope.newlook.image = canvas.toDataURL('image/jpeg', 1.0);    
             looksFactory.save ($scope.newlook);
-            
-            // clears the form and image div after saving
-            $scope.newlook = {};
-            document.getElementById('box1').innerHTML = "";
-            $state.go($state.current, {}, {reload: true}); 
         }); 
-    };   
+    };
     
+    $scope.refreshForm = function () {
+        $scope.newlook = {};
+        document.getElementById('box1').innerHTML = "";
+        $state.go($state.current, {}, {reload: true}); 
+    };  
 }]) 
 
         
