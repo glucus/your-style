@@ -59,9 +59,6 @@ body {
 .navbar-inverse .navbar-nav > .active > a {
   color: darkorange;
 }
-.navbar-inverse .navbar-nav > .active > a:hover {
-  color: darkorange;
-}
 
 header h1 {
   padding-top: 20px;
@@ -163,6 +160,18 @@ ul.nav-pills li a {
 max-height: 300px;
 max-width: 250px;
 }
+
+
+#lookConstructorLeft {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+#lookConstructorRight {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 
 #box1 {
     height: 850px;
