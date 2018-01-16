@@ -46,17 +46,17 @@ angular.module('yourStyleApp')
     
   function loadUserCredentials() {
     var credentials = $localStorage.getObject (TOKEN_KEY,'{}');
-    if (credentials.TOKEN_KEY != undefined) { // credentials.username 
-      useCredentials(credentials);
+    if (credentials.authToken != undefined) { // username
+      useCredentials (credentials);
     }
   }
  
     function storeUserCredentials(credentials) {   
         $localStorage.storeObject(TOKEN_KEY, credentials);
-        useCredentials(credentials);
+        useCredentials (credentials);
     }
 
-  function useCredentials(credentials) {
+  function useCredentials (credentials) {
     isAuthenticated = true;
     username = credentials.username;
     authToken = credentials.token;
