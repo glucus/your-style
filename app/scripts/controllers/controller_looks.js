@@ -28,7 +28,7 @@ angular.module('yourStyleApp')
             console.log ('Delete look', lookid);
             looksFactory.delete ({id: lookid});
             $state.go ($state.current, {}, {reload: true});
-        };
+        }
     };
 
-}])
+}]);

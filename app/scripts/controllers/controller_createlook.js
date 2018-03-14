@@ -46,67 +46,58 @@ function ($scope, $state, clothesFactory, sampleClothes, html2canvasAngular, loo
     $scope.clothesDrop = [];
     $scope.clothesDrop2 = [];
 
-    $scope.onDragComplete = function(data, evt) {
-        console.log("drag success, data:", data);
-        var index = $scope.clothesDrop.indexOf(data);
+    $scope.onDragComplete1 = function(data, evt) {
+        var index = $scope.clothesDrop1.indexOf(data);
         if (index > -1) {
-            $scope.clothesDrop.splice(index, 1);
+            $scope.clothesDrop1.splice(index, 1);
         }
-    }
+    };
     
     $scope.onDragComplete2 = function(data, evt) {
-        console.log("drag success, data:", data);
         var index = $scope.clothesDrop2.indexOf(data);
         if (index > -1) {
             $scope.clothesDrop2.splice(index, 1);
         }
-    }  
+    };  
     
     $scope.onDropComplete = function(data, evt) {
-        console.log("drop success, data:", data);
         var index = $scope.clothesDrop.indexOf(data);
         if (index == -1) {
             $scope.clothesDrop.push(data);
-            $scope.checkStyle(data)
-        };
-    }
+            $scope.checkStyle(data);
+        }
+    };
     
     $scope.onDropComplete2 = function(data, evt) {
-        console.log("drop success, data:", data);
         var index = $scope.clothesDrop2.indexOf(data);
         if (index == -1) {
             $scope.clothesDrop2.push(data);
-            $scope.checkStyle(data)
-        };
-    }
+            $scope.checkStyle(data);
+        }
+    };
     
     $scope.onDropCompleteInput = function(data, evt) {
-        console.log("drop on input success, data:", data);
         $scope.input = data;
-    }
+    };
     
     $scope.onDropCompleteRemove = function(data, evt) {
-        console.log("drop success - remove, data:", data);
         var index = $scope.clothesDrop.indexOf(data);
         if (index != -1)
         $scope.clothesDrop.splice(index);
-    }
+    };
     
     $scope.onDropCompleteRemove2 = function(data, evt) {
-        console.log("drop success - remove, data:", data);
         var index = $scope.clothesDrop2.indexOf(data);
         if (index != -1)
         $scope.clothesDrop2.splice(index);
-    }
+    };
     
     var onDraggableEvent = function(evt, data) {
         console.log("128", "onDraggableEvent", evt, data);
-    }
+    };
     
     $scope.$on('draggable:start', onDraggableEvent);
-    //$scope.$on('draggable:move', onDraggableEvent);
     $scope.$on('draggable:end', onDraggableEvent);
-    
     
 
     // checks category of dragged object to set the image max-size in the dropzone
@@ -126,7 +117,7 @@ function ($scope, $state, clothesFactory, sampleClothes, html2canvasAngular, loo
                 "max-height" : "300px",
                 "max-width": "300px"
             };
-        };
+        }
         console.log(data, $scope.imageSizeLimit);
     };
     
@@ -162,6 +153,6 @@ function ($scope, $state, clothesFactory, sampleClothes, html2canvasAngular, loo
         document.getElementById('box1').innerHTML = "";
         $state.go($state.current, {}, {reload: true}); 
     };  
-}]) 
+}]);
 
         

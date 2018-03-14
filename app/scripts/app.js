@@ -1,9 +1,10 @@
 'use strict';
 
 angular
-    .module('yourStyleApp', ['ui.router', 'ui.bootstrap', 'ngResource', 'ngDialog', 'ngDraggable', 'html2canvasAngular', 'ngFileUpload']) 
+    .module ('yourStyleApp', ['ui.router', 'ui.bootstrap', 'ngResource', 
+     'ngDialog', 'ngDraggable', 'html2canvasAngular', 'ngFileUpload']) 
 
-    .config(function($stateProvider, $urlRouterProvider) {
+    .config (function ($stateProvider, $urlRouterProvider) {
         $stateProvider
                
             .state('app', {
@@ -52,7 +53,7 @@ angular
                         controller  : 'CreateLookController'  
                     }
                 }
-            })
+            });
     
         $urlRouterProvider.otherwise('/');
     })

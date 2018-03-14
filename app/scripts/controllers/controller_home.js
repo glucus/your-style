@@ -16,6 +16,6 @@ angular.module('yourStyleApp')
             $scope.message = "Error: " + response.status + " " + response.statusText;
         }
     );
-}])
+}]);
 
 

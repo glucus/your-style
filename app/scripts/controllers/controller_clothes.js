@@ -27,11 +27,9 @@ function ($scope, $state, clothesFactory, sampleClothes, clothesCategories, Auth
     clothesFactory.query (
         function (response) {
             if (response.length == 0) {
-                console.log (response.length);
                 $scope.clothes = $scope.sampleClothes;
                 $scope.showClothes = true;
             } else {
-                console.log (response.length);
                 $scope.clothes = response; 
                 $scope.showClothes = true;
                 $scope.showDelete = true;
@@ -79,10 +77,9 @@ function ($scope, $state, clothesFactory, sampleClothes, clothesCategories, Auth
         
     $scope.deleteClothes = function(clothesid) {
         if (window.confirm ("Do you really want to delete this item ?")) { 
-            console.log('Delete clothes', clothesid);
             clothesFactory.delete({id: clothesid});
             $state.go($state.current, {}, {reload: true});
-        };
+        }
     };
     
 
@@ -107,19 +104,16 @@ function ($scope, $state, clothesFactory, sampleClothes, clothesCategories, Auth
         })
         .then (            
             function (response) {
-                console.log('Success ' + response.config.data.file.name + ' uploaded');
-                console.log(response);
-                $scope.newname = 'uploads/'+response.data;
+                window.alert ('Success ' + response.config.data.file.name + ' uploaded');
+                $scope.newname = 'uploads/' + response.data;
                 $scope.newclothes.image = $scope.newname;
-            }, function (response) {
-                    $scope.message = "Error: " + response.status + " " + response.statusText;
+            }, function (reject) {
+                    $scope.message = "Error: " + reject.status + " " + reject.statusText;
                     $window.alert('image upload error');
             },     
             function (evt) { 
-                console.log(evt);
-                $scope.progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                $scope.progressPercentage = parseInt (100.0 * evt.loaded / evt.total);
                 $scope.progress = $scope.progressPercentage + '% loaded';
-                console.log(evt.config.data.file.name + $scope.progress);
         });
     };      
 
@@ -129,16 +123,16 @@ function ($scope, $state, clothesFactory, sampleClothes, clothesCategories, Auth
         $scope.newclothes = {};
         $scope.addClothesForm.$setPristine();
         $scope.showAddClothes = !$scope.showAddClothes;
-        $state.go($state.current, {}, {reload: true})
+        $state.go ($state.current, {}, {reload: true});
     };         
     
     // adds sample clothes to wardrobe 
     $scope.addSampleClothes = function () {
         for (var i = 0, l = $scope.sampleClothes.length; i < l; i++) {
             clothesFactory.save($scope.sampleClothes[i]);  
-        };
-        $state.go($state.current, {}, {reload: true})
+        }
+        $state.go ($state.current, {}, {reload: true});
     }; 
 
-}])
+}]);
 

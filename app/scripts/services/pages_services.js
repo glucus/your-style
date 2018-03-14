@@ -62,7 +62,7 @@ angular.module('yourStyleApp')
     
      this.getSampleClothes = function () {
          return sampleClothes;
-     }
+     };
 })
 
 
@@ -110,7 +110,7 @@ angular.module('yourStyleApp')
     
     this.getCategories = function() {
         return clothesCategories;
-    }
+    };
 })
 
 

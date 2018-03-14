@@ -5,7 +5,7 @@ angular.module('yourStyleApp')
 // html2canvas angular wrapper ( https://github.com/tristansokol/html2canvas-angular) 
 
 .factory('html2canvasAngular', ['$q', function($q) {
-	self = {
+	var self = {
 		renderBody: function () {
 			var deferred = $q.defer();
 
@@ -24,7 +24,7 @@ angular.module('yourStyleApp')
 			});      
 			return deferred.promise;
 		}
-	}
+	};
 	return self;  
 }])
 ;
