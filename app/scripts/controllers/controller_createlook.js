@@ -20,16 +20,14 @@ function ($scope, $state, clothesFactory, sampleClothes, html2canvasAngular, loo
     ];
         
 
-    // gets clothes from server, if user doesn't havy any clothes, shows sample clothes
+    // gets clothes from server, if user doesn't have any clothes, shows sample clothes
 
     clothesFactory.query (
         function (response) {
             if (response.length == 0) {
-                console.log (response.length);
                 $scope.clothes = $scope.sampleClothes;
                 $scope.showClothes = true;
             } else {
-                console.log (response.length);
                 $scope.clothes = response; 
                 $scope.showClothes = true;
             }
@@ -92,13 +90,7 @@ function ($scope, $state, clothesFactory, sampleClothes, html2canvasAngular, loo
         $scope.clothesDrop2.splice(index);
     };
     
-    var onDraggableEvent = function(evt, data) {
-        console.log("128", "onDraggableEvent", evt, data);
-    };
-    
-    $scope.$on('draggable:start', onDraggableEvent);
-    $scope.$on('draggable:end', onDraggableEvent);
-    
+
 
     // checks category of dragged object to set the image max-size in the dropzone
     $scope.checkStyle = function(data) {
@@ -118,7 +110,6 @@ function ($scope, $state, clothesFactory, sampleClothes, html2canvasAngular, loo
                 "max-width": "300px"
             };
         }
-        console.log(data, $scope.imageSizeLimit);
     };
     
 

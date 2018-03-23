@@ -104,12 +104,12 @@ function ($scope, $state, clothesFactory, sampleClothes, clothesCategories, Auth
         })
         .then (            
             function (response) {
-                window.alert ('Success ' + response.config.data.file.name + ' uploaded');
+                console.log (response.config.data.file.name + ' uploaded');
                 $scope.newname = 'uploads/' + response.data;
                 $scope.newclothes.image = $scope.newname;
             }, function (reject) {
                     $scope.message = "Error: " + reject.status + " " + reject.statusText;
-                    $window.alert('image upload error');
+                    console.error ($scope.message);
             },     
             function (evt) { 
                 $scope.progressPercentage = parseInt (100.0 * evt.loaded / evt.total);
