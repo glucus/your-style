@@ -24,7 +24,8 @@
         
        <!-- gallery (available clothes list) -->
         <div class="col-md-4" ng-if="showClothes">
-           <div ng-drop="true" ng-drop-success="onDropCompleteRemove($data,$event)" id="gallery-container">
+           <div id="gallery-container" ng-drop="true">  
+               <!-- ng-drop-success="onDropCompleteRemove ($data, $event)"-->
                 <h4 class="text-muted">Wardrobe</h4>
                 <p class="text-muted">
                     Search <input type="text" ng-model="filtText">
@@ -39,14 +40,16 @@
 
         <!-- dropzones --> 
         <div class="col-md-6" id="lookConstructor" ng-if="showClothes">
+            
             <!-- dropzone 1 -->
             <div class="col-md-6">
-                <div ng-drop="true" ng-drop-success="onDropComplete($data,$event)"
-                      id="lookConstructorLeft"> 
+                <div id="lookConstructorLeft" ng-drop="true" 
+                     ng-drop-success="onDropComplete ($data, $event, clothesDrop)">
+                    
                     <div class="padding-top-10"></div>
                     <div ng-repeat="clothes in clothesDrop" 
                          ng-drag="true" ng-drag-data="clothes" 
-                         ng-drag-success="onDragComplete($data,$event)">
+                         ng-drag-success="onDragComplete ($data, $event, clothesDrop)">
                         <img droppable src="{{clothes.image}}" alt="" ng-style={{imageSizeLimit}}>        
                     </div>
                 </div>  
@@ -54,13 +57,13 @@
 
             <!-- dropzone 2 -->
             <div class="col-md-6">
-                <div ng-drop="true" ng-drop-success="onDropComplete2($data,$event)"
+                <div ng-drop="true" ng-drop-success="onDropComplete ($data, $event, clothesDrop2)"
                       id="lookConstructorRight">
 
                     <div class="padding-top-10"></div>
                     <div ng-repeat="clothes in clothesDrop2" 
                          ng-drag="true" ng-drag-data="clothes" 
-                         ng-drag-success="onDragComplete2($data,$event)">
+                         ng-drag-success="onDragComplete ($data, $event, clothesDrop2)">
                         <img droppable src="{{clothes.image}}" alt="" ng-style={{imageSizeLimit}}>        
                     </div>
                 </div>  

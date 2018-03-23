@@ -37,63 +37,9 @@ function ($scope, $state, clothesFactory, sampleClothes, html2canvasAngular, loo
     }); 
 
     
-    /*  drag & drop uses NgDraggable package
-        https://github.com/fatlinesofcode/ngDraggable */ 
-     
-    // 2 parts of dropzone 
-    $scope.clothesDrop = [];
-    $scope.clothesDrop2 = [];
-
-    $scope.onDragComplete1 = function(data, evt) {
-        var index = $scope.clothesDrop1.indexOf(data);
-        if (index > -1) {
-            $scope.clothesDrop1.splice(index, 1);
-        }
-    };
     
-    $scope.onDragComplete2 = function(data, evt) {
-        var index = $scope.clothesDrop2.indexOf(data);
-        if (index > -1) {
-            $scope.clothesDrop2.splice(index, 1);
-        }
-    };  
-    
-    $scope.onDropComplete = function(data, evt) {
-        var index = $scope.clothesDrop.indexOf(data);
-        if (index == -1) {
-            $scope.clothesDrop.push(data);
-            $scope.checkStyle(data);
-        }
-    };
-    
-    $scope.onDropComplete2 = function(data, evt) {
-        var index = $scope.clothesDrop2.indexOf(data);
-        if (index == -1) {
-            $scope.clothesDrop2.push(data);
-            $scope.checkStyle(data);
-        }
-    };
-    
-    $scope.onDropCompleteInput = function(data, evt) {
-        $scope.input = data;
-    };
-    
-    $scope.onDropCompleteRemove = function(data, evt) {
-        var index = $scope.clothesDrop.indexOf(data);
-        if (index != -1)
-        $scope.clothesDrop.splice(index);
-    };
-    
-    $scope.onDropCompleteRemove2 = function(data, evt) {
-        var index = $scope.clothesDrop2.indexOf(data);
-        if (index != -1)
-        $scope.clothesDrop2.splice(index);
-    };
-    
-
-
     // checks category of dragged object to set the image max-size in the dropzone
-    $scope.checkStyle = function(data) {
+    $scope.checkStyle = function (data) {
         if (data.category === "shoes" || data.category === "accessories") {
             $scope.imageSizeLimit = {
                 "max-height" : "300px", 
@@ -112,7 +58,28 @@ function ($scope, $state, clothesFactory, sampleClothes, html2canvasAngular, loo
         }
     };
     
+    /*  drag & drop uses NgDraggable package
+        https://github.com/fatlinesofcode/ngDraggable */ 
+     
+    // 2 dropzones
+    $scope.clothesDrop = [];
+    $scope.clothesDrop2 = [];
 
+    $scope.onDragComplete = function (data, evt, dropzone) {
+        var index = dropzone.indexOf (data);
+        if (index > -1) {
+            dropzone.splice (index, 1);
+        }
+    };
+        
+    $scope.onDropComplete = function (data, evt, dropzone) {
+        var index = dropzone.indexOf(data);
+        if (index == -1) {
+            dropzone.push (data);
+            $scope.checkStyle (data);
+        }
+    };
+    
 
     // saves drop zone content as an image to a div #box1 (clearing it first) using html2canvas
     $scope.takeLookScreenshot = function () {
