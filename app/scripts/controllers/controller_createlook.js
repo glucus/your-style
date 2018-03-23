@@ -81,36 +81,38 @@ function ($scope, $state, clothesFactory, sampleClothes, html2canvasAngular, loo
     };
     
 
-    // saves drop zone content as an image to a div #box1 (clearing it first) using html2canvas
-    $scope.takeLookScreenshot = function () {
+    // saves drop zone content as an image to a div #box1 (clearing it first) using html2canvas 
+    // and saves it to gallery
 
-        document.getElementById('box1').innerHTML = "";  
-        html2canvasAngular.renderBody().then (function (canvas) {
-            document.getElementById('box1').appendChild(canvas);
- 
-            // converts canvas content to base64 format https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL;
-            $scope.lookDataURL = canvas.toDataURL('image/jpeg', 1.0);
-        });
+    $scope.save = false;
+    $scope.getScreenshotAndSaveLook = function (save) {
+        
+        document.getElementById('box1').innerHTML = ""; 
+        
+        // converts canvas content to base64 format 
+        // https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL;
+        html2canvasAngular.renderBody().then(
+        
+            function (canvas) {
+                document.getElementById('box1').appendChild (canvas);
+                $scope.newlook.image = canvas.toDataURL('image/jpeg', 1.0);
+                
+                if (save == true) {
+                    looksFactory.save ($scope.newlook);
+                    $state.go ('app.looks', {}, {reload: true});
+                }
+            }, 
+            function () {
+                console.log ('Error: cannot preview')
+            }); 
     };
-
-
-    // saves look to gallery  
-    $scope.addLook = function () { 
-
-        document.getElementById('box1').innerHTML = ""; // clears the div
-        html2canvasAngular.renderBody().then (function (canvas) {
-
-            document.getElementById('box1').appendChild(canvas);
-            $scope.newlook.image = canvas.toDataURL('image/jpeg', 1.0);    
-            looksFactory.save ($scope.newlook);
-        }); 
-    };
+    
     
     $scope.refreshForm = function () {
         $scope.newlook = {};
         document.getElementById('box1').innerHTML = "";
-        $state.go($state.current, {}, {reload: true}); 
     };  
+    
 }]);
 
         

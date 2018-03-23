@@ -25,13 +25,11 @@
        <!-- gallery (available clothes list) -->
         <div class="col-md-4" ng-if="showClothes">
            <div id="gallery-container" ng-drop="true">  
-               <!-- ng-drop-success="onDropCompleteRemove ($data, $event)"-->
                 <h4 class="text-muted">Wardrobe</h4>
-                <p class="text-muted">
-                    Search <input type="text" ng-model="filtText">
-                </p>   
+                <p class="text-muted">Search <input type="text" ng-model="filtText"></p>   
                 <div ng-repeat="clothes in clothes | filter:filtText" >
-                    <img droppable src="{{clothes.image}}" alt="" ng-drag="true"
+                    <img droppable src="{{clothes.image}}" 
+                         alt="" ng-drag="true"
                          ng-drag-data="clothes"> 
                 </div>  
             </div> 
@@ -77,8 +75,9 @@
     
         <div class="col-xs-12">
             <h3>Save look to gallery</h3>
-        </div> 
-        <form name="newLookForm" class="form-horizontal" ng-submit="addLook()">
+        </div>
+        
+        <form name="newLookForm" class="form-horizontal" ng-submit="getScreenshotAndSaveLook(true)">
             <div class="form-group col-xs-12 col-sm-4"> 
                 <div class="row">
                     <div class="form-group col-xs-12">
@@ -108,7 +107,7 @@
 
                 <div class="row">
                     <div class="button-group col-xs-12">
-                        <button type="button" ng-click="takeLookScreenshot()" class="btn btn-default btn-md">
+                        <button type="button" ng-click="getScreenshotAndSaveLook (false)" class="btn btn-default btn-md">
                          Preview image</button> 
                         <button type="submit" class="btn btn-info btn-md">
                          Save to gallery</button>
